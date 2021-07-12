@@ -1,0 +1,34 @@
+syntax = "proto3";
+package williamfeng323.chainmon.chainmon;
+
+option go_package = "github.com/williamfeng323/chainmon/x/chainmon/types";
+
+import "gogoproto/gogo.proto";
+
+enum MonClass {
+    BEAST = 1;
+    INSET = 2;
+    AQUATIC = 3;
+    PLANT = 4;
+    METAL = 5;
+    DRAGON = 6;
+}
+
+enum Phase {
+    BIT = 1;
+    BYTE = 2;
+    KILOBYTE = 3;
+    MEGABYTE = 4;
+    GIGABYTE = 5;
+    TERABYTE = 6;
+}
+
+// Chainmomn defines the basic info of  a chainmon.
+message Chainmomn {
+    string id = 1;
+    string name = 2;
+    MonClass monClass = 3;
+    Phase phase = 4;
+    int64 species = 5;
+    int64 databricks = 6;
+}

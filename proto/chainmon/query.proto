@@ -4,12 +4,40 @@ package williamfeng323.chainmon.chainmon;
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
+import "chainmon/chainmon.proto";
 
 option go_package = "github.com/williamfeng323/chainmon/x/chainmon/types";
 
 // Query defines the gRPC querier service.
 service Query {
     // this line is used by starport scaffolding # 2
+
+	// Queries a chainmon by id.
+	rpc Chainmon(QueryGetChainmonRequest) returns (QueryGetChainmonResponse) {
+		option (google.api.http).get = "/williamfeng323/chainmon/chainmon/chainmon/{id}";
+	}
+
+	// Queries a list of chainmon items.
+	rpc ChainmonAll(QueryAllChainmonRequest) returns (QueryAllChainmonResponse) {
+		option (google.api.http).get = "/williamfeng323/chainmon/chainmon/chainmon";
+	}
+
 }
 
 // this line is used by starport scaffolding # 3
+message QueryGetChainmonRequest {
+	uint64 id = 1;
+}
+
+message QueryGetChainmonResponse {
+	Chainmon Chainmon = 1;
+}
+
+message QueryAllChainmonRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllChainmonResponse {
+	repeated Chainmon Chainmon = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}

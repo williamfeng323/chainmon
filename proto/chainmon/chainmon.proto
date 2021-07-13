@@ -6,29 +6,29 @@ option go_package = "github.com/williamfeng323/chainmon/x/chainmon/types";
 import "gogoproto/gogo.proto";
 
 enum MonClass {
-    BEAST = 1;
-    INSET = 2;
-    AQUATIC = 3;
-    PLANT = 4;
-    METAL = 5;
-    DRAGON = 6;
+  BEAST = 0;
+  INSET = 1;
+  AQUATIC = 2;
+  PLANT = 3;
+  METAL = 4;
+  DRAGON = 5;
 }
 
 enum Phase {
-    BIT = 1;
-    BYTE = 2;
-    KILOBYTE = 3;
-    MEGABYTE = 4;
-    GIGABYTE = 5;
-    TERABYTE = 6;
+  BIT = 0;
+  BYTE = 1;
+  KILOBYTE = 2;
+  MEGABYTE = 3;
+  GIGABYTE = 4;
+  TERABYTE = 5;
 }
 
-// Chainmomn defines the basic info of  a chainmon.
-message Chainmomn {
-    string id = 1;
-    string name = 2;
-    MonClass monClass = 3;
-    Phase phase = 4;
-    int64 species = 5;
-    int64 databricks = 6;
+message Chainmon {
+  string creator = 1;
+  uint64 id = 2;
+  string name = 3; 
+  MonClass monClass = 4; 
+  Phase phase = 5; 
+  uint64 species = 6; 
+  int64 databricks = 7; 
 }

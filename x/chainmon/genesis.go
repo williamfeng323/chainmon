@@ -10,6 +10,13 @@ import (
 // state.
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// this line is used by starport scaffolding # genesis/module/init
+	// Set all the chainmon
+	for _, elem := range genState.ChainmonList {
+		k.SetChainmon(ctx, *elem)
+	}
+
+	// Set chainmon count
+	k.SetChainmonCount(ctx, genState.ChainmonCount)
 
 	// this line is used by starport scaffolding # ibc/genesis/init
 }
@@ -19,6 +26,15 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis := types.DefaultGenesis()
 
 	// this line is used by starport scaffolding # genesis/module/export
+	// Get all chainmon
+	chainmonList := k.GetAllChainmon(ctx)
+	for _, elem := range chainmonList {
+		elem := elem
+		genesis.ChainmonList = append(genesis.ChainmonList, &elem)
+	}
+
+	// Set the current count
+	genesis.ChainmonCount = k.GetChainmonCount(ctx)
 
 	// this line is used by starport scaffolding # ibc/genesis/export
 

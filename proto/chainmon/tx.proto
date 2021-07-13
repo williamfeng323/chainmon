@@ -2,12 +2,47 @@ syntax = "proto3";
 package williamfeng323.chainmon.chainmon;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "chainmon/chainmon.proto";
 
 option go_package = "github.com/williamfeng323/chainmon/x/chainmon/types";
 
 // Msg defines the Msg service.
 service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateChainmon(MsgCreateChainmon) returns (MsgCreateChainmonResponse);
+  rpc UpdateChainmon(MsgUpdateChainmon) returns (MsgUpdateChainmonResponse);
+  rpc DeleteChainmon(MsgDeleteChainmon) returns (MsgDeleteChainmonResponse);
 }
 
 // this line is used by starport scaffolding # proto/tx/message
+message MsgCreateChainmon {
+  string creator = 1;
+  string name = 2;
+  MonClass monClass = 3;
+  Phase phase = 4;
+  uint64 species = 5;
+  int64 databricks = 6;
+}
+
+message MsgCreateChainmonResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateChainmon {
+  string creator = 1;
+  uint64 id = 2;
+  string name = 3;
+  MonClass monClass = 4;
+  Phase phase = 5;
+  uint64 species = 6;
+  int64 databricks = 7;
+}
+
+message MsgUpdateChainmonResponse { }
+
+message MsgDeleteChainmon {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteChainmonResponse { }

@@ -1,0 +1,12 @@
+syntax = "proto3";
+package williamfeng323.chainmon.chainmon;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/williamfeng323/chainmon/x/chainmon/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+}

@@ -1,12 +1,14 @@
 syntax = "proto3";
 package williamfeng323.chainmon.chainmon;
 
+import "gogoproto/gogo.proto";
+import "chainmon/params.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/williamfeng323/chainmon/x/chainmon/types";
 
 // GenesisState defines the chainmon module's genesis state.
 message GenesisState {
-    // this line is used by starport scaffolding # genesis/proto/state
-    // this line is used by starport scaffolding # ibc/genesis/proto
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
 }

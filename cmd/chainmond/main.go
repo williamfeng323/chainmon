@@ -4,12 +4,20 @@ import (
 	"os"
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
+	"github.com/ignite-hq/cli/ignite/pkg/cosmoscmd"
 	"github.com/williamfeng323/chainmon/app"
-	"github.com/williamfeng323/chainmon/cmd/chainmond/cmd"
 )
 
 func main() {
-	rootCmd, _ := cmd.NewRootCmd()
+	rootCmd, _ := cosmoscmd.NewRootCmd(
+		app.Name,
+		app.AccountAddressPrefix,
+		app.DefaultNodeHome,
+		app.Name,
+		app.ModuleBasics,
+		app.New,
+		// this line is used by starport scaffolding # root/arguments
+	)
 	if err := svrcmd.Execute(rootCmd, app.DefaultNodeHome); err != nil {
 		os.Exit(1)
 	}
